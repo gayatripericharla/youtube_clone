@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone - Gayatri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-overlay">
+        <div class="login-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" class="login-logo" alt="YouTube Logo">
+            <h2>Sign In</h2>
+            <p>To access your custom video dashboard</p>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <input type="text" id="user-name-input" required placeholder="Enter your name">
+                </div>
+                <button type="submit" class="login-submit-btn">Next</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-wrapper" style="display: none;">
+        
+        <nav class="navbar">
+            <div class="nav-left">
+                <span id="menu-btn" style="cursor: pointer; font-size: 24px;">☰</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" class="logo" alt="YouTube Logo">
+            </div>
+
+            <div class="nav-center">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+
+            <div class="nav-right" style="position: relative;"> <span style="cursor: pointer;">📹</span>
+                <span style="cursor: pointer;">🔔</span>
+                <div class="user-profile" id="user-profile-avatar" title="Open Account Settings"></div>
+                
+                <div class="profile-dropdown" id="profile-menu">
+                    <div class="dropdown-header">
+                        <p id="dropdown-user-name">Welcome!</p>
+                    </div>
+                    <hr>
+                    <div class="dropdown-item" id="theme-toggle-btn">🌙 Dark Mode</div>
+                    <div class="dropdown-item logout-item" id="logout-btn">🚪 Log Out</div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            
+            <aside class="sidebar">
+                <div class="side-link" id="home-btn"><span>🏠</span> <p>Home</p></div>
+                <div class="side-link" id="shorts-btn"><span>▶️</span> <p>Shorts</p></div>
+                <div class="side-link" id="subs-btn"><span>📺</span> <p>Subscriptions</p></div>
+                <hr style="margin: 10px 0; border: 0; border-top: 1px solid #ddd;">
+                <div class="side-link" id="library-btn"><span>📚</span> <p>Library</p></div>
+                <div class="side-link" id="history-btn"><span>🕒</span> <p>History</p></div>
+            </aside>
+
+            <main class="content">
+                
+                <div class="chips-wrapper">
+                    <button class="chip active">All</button>
+                    <button class="chip">Movies</button>
+                    <button class="chip">Tech</button>
+                    <button class="chip">Music</button>
+                    <button class="chip">Cartoon</button>
+                    <button class="chip">Cooking</button>
+                    <button class="chip">Nature</button>
+                </div>
+
+                <div id="main-feed-container">
+                    <h2>Recommended Videos</h2>
+                    <div class="video-grid">
+                        
+                        <div class="video-card" data-category="movies" data-video-id="bUR_FKt7Iso">
+                            <div class="video-placeholder">
+                                <img src="https://wallpapers.com/images/hd/salaar-movie-poster-og7m9y728smfekvs.jpg" class="thumbnail" alt="Salaar">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #333;"></div>
+                                <div class="video-text">
+                                    <h3>Salaar Official Teaser | Prabhas | Prashanth Neel</h3>
+                                    <p>Hombale Films • 150M views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="movies" data-video-id="WClEZFcu_Ow">
+                            <div class="video-placeholder">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzz9_PjUm6_6yJd46AG8ZWFP-EVAAHNPWZzg&s" class="thumbnail" alt="Darling">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #e91e63;"></div>
+                                <div class="video-text">
+                                    <h3>Darling Movie Super Hit Scenes | Prabhas, Kajal Aggarwal</h3>
+                                    <p>First Show Movies • 4K Quality</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="tech" data-video-id="rfscVS0vtbw">
+                            <div class="video-placeholder">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeIeVu7kf17z_H1uf9ZKaxnNbaavKzuAJ9rw&s" class="thumbnail">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #9c27b0;"></div>
+                                <div class="video-text">
+                                    <h3>Learning Python-Full Course</h3>
+                                    <p>Data Science Daily • 85K views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="cartoon" data-video-id="t0Q2otsqC4I">
+                            <div class="video-placeholder">
+                                <img src="https://m.media-amazon.com/images/I/512fqKl2HpL._AC_UF894,1000_QL80_.jpg" class="thumbnail">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #00e5ff;"></div>
+                                <div class="video-text">
+                                    <h3>Tom & Jerry(Classic Cartoon)</h3>
+                                    <p>NoCopyrightSounds • 500M views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="nature" data-video-id="LXb3EKWsInQ">
+                            <div class="video-placeholder">
+                                <img src="https://picsum.photos/seed/nature/300/200" class="thumbnail">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #4caf50;"></div>
+                                <div class="video-text">
+                                    <h3>Costa Rica in 4K 60fps (HDR)</h3>
+                                    <p>Jacob + Katie Schwarz • 150M views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="cooking" data-video-id="Y9hQi_1jXg0">
+                            <div class="video-placeholder">
+                                <img src="https://blissfulbitesbytay.com/wp-content/uploads/2020/09/Egg-biryani-500x375.jpg" class="thumbnail" alt="Egg Biryani Cooking">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #ff9800;"></div>
+                                <div class="video-text">
+                                    <h3>Egg Dum Biryani Recipe | Traditional Telugu Cooking Process</h3>
+                                    <p>Amma Chethi Vanta • 5.6M views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="music" data-video-id="sdXPt-lgbE0">
+                            <div class="video-placeholder">
+                                <img src="https://i.scdn.co/image/ab67616d00001e025876930f10c14608a02803f0" class="thumbnail" alt="Chamiki Song">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #607d8b;"></div>
+                                <div class="video-text">
+                                    <h3>Chamiki Music Video (Telugu) | Youth | GV Prakash</h3>
+                                    <p>G.V. Prakash Kumar • 8.2M views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="video-card" data-category="music" data-video-id="xDkNIWgGb3g">
+                            <div class="video-placeholder">
+                                <img src="https://i.ytimg.com/vi/kp_bYsb6ctU/maxresdefault.jpg" class="thumbnail" alt="Bommali Song">
+                            </div>
+                            <div class="video-info">
+                                <div class="channel-icon" style="background-color: #ffcc00;"></div>
+                                <div class="video-text">
+                                    <h3>Bommali [4K] Video Song | Billa Telugu Movie | Prabhas, Anushka</h3>
+                                    <p>Lahari Music Telugu • 56M views</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> 
+                </div> 
+                <div id="dynamic-page-container" style="display: none;"></div>
+            </main>
+        </div> 
+    </div>
+
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-player-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
